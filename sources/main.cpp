@@ -6,14 +6,14 @@
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:01:50 by vegret            #+#    #+#             */
-/*   Updated: 2023/11/29 19:17:30 by vegret           ###   ########.fr       */
+/*   Updated: 2023/11/29 20:36:48 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <stdexcept>
-#include "../includes/Config.hpp"
-#include "../includes/Server.hpp"
+#include "Config.hpp"
+#include "Server.hpp"
 
 int main(int argc, char const *argv[]) {
 
@@ -24,7 +24,7 @@ int main(int argc, char const *argv[]) {
 
 	try {
 		Config config(argv[1]);
-	} catch (std::exception& e) {
+	} catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 		return 1;
 	}

@@ -6,11 +6,11 @@
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 19:16:46 by vegret            #+#    #+#             */
-/*   Updated: 2023/11/29 19:24:25 by vegret           ###   ########.fr       */
+/*   Updated: 2023/11/29 20:37:06 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Server.hpp"
+#include "Server.hpp"
 
 Server::Server() {}
 

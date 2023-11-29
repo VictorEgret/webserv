@@ -6,7 +6,7 @@
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:49:39 by vegret            #+#    #+#             */
-/*   Updated: 2023/11/29 19:24:08 by vegret           ###   ########.fr       */
+/*   Updated: 2023/11/29 20:47:50 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Config {
 
 	public:
 		Config();
-		Config(std::string path);
+		Config(const char* path);
 		Config(const Config& source);
 		~Config();
 

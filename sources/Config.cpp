@@ -6,26 +6,26 @@
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 19:00:37 by vegret            #+#    #+#             */
-/*   Updated: 2023/11/29 19:13:15 by vegret           ###   ########.fr       */
+/*   Updated: 2023/11/29 20:47:40 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <fstream>
+#include <cstdlib>
 #include <stdexcept>
 #include <sys/stat.h>
-#include "../includes/Config.hpp"
+#include "Config.hpp"
 
 Config::Config() {
 }
 
-static bool	is_dir(const std::string& path) {
+static bool	is_dir(const char* path) {
 	struct stat buf;
-	stat(path.c_str(), &buf);
+	stat(path, &buf);
 	return (S_ISDIR(buf.st_mode));
 }
 
-Config::Config(std::string path) {
+Config::Config(const char* path) {
 	if (is_dir(path))
 		throw std::runtime_error("Error: file is a directory.");
 

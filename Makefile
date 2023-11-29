@@ -6,7 +6,7 @@
 #    By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 04:45:01 by dtelnov           #+#    #+#              #
-#    Updated: 2023/11/29 19:17:06 by vegret           ###   ########.fr        #
+#    Updated: 2023/11/29 20:45:55 by vegret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,13 +126,13 @@ $(NAME): $(OBJS)
 #	================= write rest of messages =================
 	@echo "\n\n\n[🔘] $(BGREEN)$(PROJECT_NAME) compiled !$(NC)\n"
 	@$(CC) $(CFLAGS) $(OBJS) -o $@
-	@printf "[✨] $(BCYAN)[%2d/%2d]\t$(BWHITE)All files have been compiled ✔️$(NC)\n" $(FILE_COUNT) $(TOTAL)
+	@printf "[✨] $(BCYAN)[ %d/%d ]\t$(BWHITE)All files have been compiled ✔️$(NC)\n" $(FILE_COUNT) $(TOTAL)
 	@echo "[💠] $(BCYAN)$(PROJECT_NAME)\t$(BWHITE) created ✔️\n$(NC)"
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -I ./includes -o $@
+%.o: %.cpp
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@$(eval FILE_COUNT=$(shell echo $$(($(FILE_COUNT)+1))))
-	@$(eval PERCENT:=$(shell echo $$((100*$(FILE_COUNT)/$(TOTAL)))))
+	@$(eval PERCENT:=$(shell echo $$((100*$(FILE_COUNT) /$(TOTAL)))))
 #	================= calculate progress bar =================
 	@$(eval BAR_PROGRESS=$(shell echo $$(($(BAR_SIZE)*$(FILE_COUNT)/$(TOTAL)))))
 #	================== calculate bar color ===================
