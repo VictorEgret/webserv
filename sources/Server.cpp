@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Server.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 17:01:50 by vegret            #+#    #+#             */
-/*   Updated: 2023/11/29 19:17:30 by vegret           ###   ########.fr       */
+/*   Created: 2023/11/29 19:16:46 by vegret            #+#    #+#             */
+/*   Updated: 2023/11/29 19:24:25 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <stdexcept>
-#include "../includes/Config.hpp"
 #include "../includes/Server.hpp"
 
-int main(int argc, char const *argv[]) {
+Server::Server() {}
 
-	if (argc != 2) {
-		std::cerr << "Usage: " << argv[0] << " [configuration file]\n";
-		return 1;
-	}
+Server::Server(Config& config) : config(config) {}
 
-	try {
-		Config config(argv[1]);
-	} catch (std::exception& e) {
-		std::cerr << e.what() << '\n';
-		return 1;
-	}
+Server::Server(const Server& source) {
+	*this = source;
+}
 
-	return 0;
+Server::~Server() {}
+
+Server &Server::operator=(const Server &source) {
+	this->config = source.config;
+	return *this;
 }

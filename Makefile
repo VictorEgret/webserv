@@ -6,7 +6,7 @@
 #    By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 04:45:01 by dtelnov           #+#    #+#              #
-#    Updated: 2023/11/29 17:16:55 by vegret           ###   ########.fr        #
+#    Updated: 2023/11/29 19:17:06 by vegret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = webserv
 PROJECT_NAME = webserv
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -I includes/
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -I ./includes
 RM = rm -f
 
 # Utils
@@ -54,7 +54,7 @@ GREEN_BG = \033[48;5;2m
 
 SRC_DIR = sources/
 
-FILES = main
+FILES = main Config Server
 
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(FILES)))
 
@@ -125,12 +125,12 @@ $(NAME): $(OBJS)
 	@printf "\b\b\b\b$(BOLD)%3d%%$(NC)\r" $(PERCENT)
 #	================= write rest of messages =================
 	@echo "\n\n\n[🔘] $(BGREEN)$(PROJECT_NAME) compiled !$(NC)\n"
-	@$(CC) $(OBJS) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) -o $@
 	@printf "[✨] $(BCYAN)[%2d/%2d]\t$(BWHITE)All files have been compiled ✔️$(NC)\n" $(FILE_COUNT) $(TOTAL)
 	@echo "[💠] $(BCYAN)$(PROJECT_NAME)\t$(BWHITE) created ✔️\n$(NC)"
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -I ./includes -o $@
 	@$(eval FILE_COUNT=$(shell echo $$(($(FILE_COUNT)+1))))
 	@$(eval PERCENT:=$(shell echo $$((100*$(FILE_COUNT)/$(TOTAL)))))
 #	================= calculate progress bar =================

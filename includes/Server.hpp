@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Server.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 17:01:50 by vegret            #+#    #+#             */
-/*   Updated: 2023/11/29 19:17:30 by vegret           ###   ########.fr       */
+/*   Created: 2023/11/29 18:49:39 by vegret            #+#    #+#             */
+/*   Updated: 2023/11/29 19:24:04 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <stdexcept>
-#include "../includes/Config.hpp"
-#include "../includes/Server.hpp"
+#ifndef SERVER_HPP
+# define SERVER_HPP
+# include <string>
+# include "Config.hpp"
 
-int main(int argc, char const *argv[]) {
+class Server {
+	private:
+		Config config;
 
-	if (argc != 2) {
-		std::cerr << "Usage: " << argv[0] << " [configuration file]\n";
-		return 1;
-	}
+	public:
+		Server();
+		Server(Config& config);
+		Server(const Server& source);
+		~Server();
 
-	try {
-		Config config(argv[1]);
-	} catch (std::exception& e) {
-		std::cerr << e.what() << '\n';
-		return 1;
-	}
+		Server &operator=(const Server &source);
+};
 
-	return 0;
-}
+#endif
